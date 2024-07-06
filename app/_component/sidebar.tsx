@@ -2,15 +2,16 @@
 
 import { useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+
 export default function Example() {
   const [open, setOpen] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null)
   
   const images = [
-    { id: 1, title: 'Image 1', src: 'https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80' },
-    { id: 2, title: 'Image 2', src: 'https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80' },
-    { id: 3, title: 'Image 3', src: 'https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80' },
-    { id: 4, title: 'Image 4', src: 'https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80' },
+    { id: 1, title: 'Image 1', src: '/Images/Image - 1.png' },
+    { id: 2, title: 'Image 2', src: '/Images/Image - 2.png' },
+    { id: 3, title: 'Image 3', src: '/Images/Image - 2.png' },
+    { id: 4, title: 'Image 4', src: '/Images/Image - 2.png' },
   ]
   
   const handleImageClick = (image) => {
@@ -24,10 +25,10 @@ export default function Example() {
       
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-10 sm:pr-16">
+          <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-[30%] pr-6 sm:pr-8">
             <DialogPanel
               transition
-              className="pointer-events-auto w-screen max-w-2xl transform transition duration-500 ease-in-out"
+              className="pointer-events-auto w-screen max-w-lg transform transition duration-500 ease-in-out"
             >
               <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="px-4 py-6 sm:px-6">
@@ -49,13 +50,14 @@ export default function Example() {
                             <img
                               alt={image.title}
                               src={image.src}
-                              className={`h-24 w-24 sm:h-40 sm:w-40 lg:h-48 lg:w-48 ${selectedImage === image.id ? 'border-4 border-indigo-500' : 'border-4 border-transparent'}`}
+                              className={`${selectedImage === image.id ? 'border-4 border-indigo-500' : 'border-4 border-transparent'} rounded-lg`}
                               onMouseEnter={(e) => e.currentTarget.classList.add('border-indigo-500')}
                               onMouseLeave={(e) => {
                                 if (selectedImage !== image.id) {
                                   e.currentTarget.classList.remove('border-indigo-500')
                                 }
                               }}
+                              style={{ borderRadius: '10px' }} // Set your desired border-radius here
                             />
                           </div>
                           <div className="mt-2 text-center w-full">
