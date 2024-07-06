@@ -1,23 +1,30 @@
 // app/_component/sidebar.tsx
 'use client';
 
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFaceImage, clearFaceImage } from '@/app/_redux/slices/selectedImages';
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {setFaceImage, clearFaceImage} from '@/app/_redux/slices/selectedImages';
 
 export default function Sidebar() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [error, setError] = useState('');
-  
+  const faceImage = useSelector((state) => state?.image?.image); // Ensure this matches your state structure
+  let images;
   const dispatch = useDispatch();
-
   
-  const images = [
-    {id: 1, title: 'Image 1', src: '/Images/Image - 1.png'},
-    {id: 2, title: 'Image 2', src: '/Images/Image - 2.png'},
-    {id: 3, title: 'Image 3', src: '/Images/Image - 2.png'},
-    {id: 4, title: 'Image 4', src: '/Images/Image - 2.png'},
-  ];
+  if (faceImage) {
+    images = [
+      {id: 1, title: 'Image 1', src: '/Images/manchester-united.png'},
+    ];
+  } else {
+    images = [
+      {id: 1, title: 'Image 1', src: '/Images/Image - 1.png'},
+      {id: 2, title: 'Image 2', src: '/Images/Image - 2.png'},
+      {id: 3, title: 'Image 3', src: '/Images/Image - 2.png'},
+      {id: 4, title: 'Image 4', src: '/Images/Image - 2.png'},
+    ];
+  }
+  
   
   const handleImageClick = (image) => {
     setError('');
@@ -46,7 +53,7 @@ export default function Sidebar() {
         <div className="px-4 py-6 sm:px-6">
           <div className="flex items-start justify-between w-full">
             <h2 className="text-base font-semibold leading-6 text-gray-900 text-center w-full">
-              Please Select Player
+              {faceImage ? 'Please Select the Jersey Now' : 'Please Select Player'}
             </h2>
           </div>
         </div>
@@ -72,7 +79,7 @@ export default function Sidebar() {
                           e.currentTarget.classList.remove('border-indigo-500');
                         }
                       }}
-                      style={{ borderRadius: '10px' }}
+                      style={{borderRadius: '10px'}}
                     />
                   </div>
                   <div className="mt-2 text-center w-full">
