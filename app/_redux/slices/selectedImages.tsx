@@ -10,6 +10,7 @@ const imageSlice = createSlice({
   reducers: {
     setImage(state, action) {
       state.image = action.payload;
+      console.log('Image is being Set Successfully', state.image);
     },
     clearImage(state) {
       state.image = {};
