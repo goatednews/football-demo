@@ -1,34 +1,44 @@
 // app/_component/sidebar.tsx
 'use client';
 
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setImage, clearImage } from '@/app/_redux/slices/selectedImages';
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {setFaceImage, clearFaceImage} from '@/app/_redux/slices/selectedImages';
+
 
 export default function Sidebar() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [error, setError] = useState('');
+  
   const dispatch = useDispatch();
+  const image = useSelector((state) => state?.image?.image);
   
   const images = [
-    { id: 1, title: 'Image 1', src: '/Images/Image - 1.png' },
-    { id: 2, title: 'Image 2', src: '/Images/Image - 2.png' },
-    { id: 3, title: 'Image 3', src: '/Images/Image - 2.png' },
-    { id: 4, title: 'Image 4', src: '/Images/Image - 2.png' },
+    {id: 1, title: 'Image 1', src: '/Images/Image - 1.png'},
+    {id: 2, title: 'Image 2', src: '/Images/Image - 2.png'},
+    {id: 3, title: 'Image 3', src: '/Images/Image - 2.png'},
+    {id: 4, title: 'Image 4', src: '/Images/Image - 2.png'},
   ];
   
   const handleImageClick = (image) => {
+    setError('')
     setSelectedImage(image);
     console.log(`Selected Image ID: ${image.id}, Title: ${image.title}`);
   };
   
   const handleClearImage = () => {
     setSelectedImage(null);
-    dispatch(clearImage());
+    dispatch(clearFaceImage());
   };
   
   const handleSubmit = () => {
-    dispatch(setImage(selectedImage));
-    console.log('Submit button clicked');
+    if (!selectedImage) {
+      setError('Please Select Image');
+      return
+    } else {
+      dispatch(setFaceImage(selectedImage));
+      console.log('Submit button clicked');
+    }
   };
   
   return (
@@ -63,7 +73,7 @@ export default function Sidebar() {
                           e.currentTarget.classList.remove('border-indigo-500');
                         }
                       }}
-                      style={{ borderRadius: '10px' }}
+                      style={{borderRadius: '10px'}}
                     />
                   </div>
                   <div className="mt-2 text-center w-full">
@@ -74,6 +84,11 @@ export default function Sidebar() {
             </div>
           </div>
         </div>
+        {error && <div className="flex items-start justify-between w-full">
+					<p className="text-base font-semibold leading-6 text-red-700 text-center w-full">
+            {error}
+					</p>
+				</div>}
         <div className="px-16 py-3 sm:px-16 sm:flex justify-between">
           <button
             type="button"
@@ -87,7 +102,7 @@ export default function Sidebar() {
             className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto sm:text-sm"
             onClick={handleSubmit}
           >
-            Submit
+            Next
           </button>
         </div>
       </div>

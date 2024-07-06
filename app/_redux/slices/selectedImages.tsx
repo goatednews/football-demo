@@ -8,15 +8,15 @@ const imageSlice = createSlice({
   name: 'image',
   initialState,
   reducers: {
-    setImage(state, action) {
+    setFaceImage(state, action) {
       state.image = action.payload;
       console.log('Image is being Set Successfully', state.image);
     },
-    clearImage(state) {
+    clearFaceImage(state) {
       state.image = {};
     },
   },
 });
 
-export const {setImage, clearImage} = imageSlice.actions;
+export const {setFaceImage, clearFaceImage} = imageSlice.actions;
 export default imageSlice.reducer;
