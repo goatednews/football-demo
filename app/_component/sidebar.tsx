@@ -14,7 +14,7 @@ export default function Example() {
     { id: 4, title: 'Image 4', src: '/Images/Image - 2.png' },
   ]
   
-  const handleImageClick = (image) => {
+  const handleImageClick = (image : any) => {
     setSelectedImage(image.id)
     console.log(`Selected Image ID: ${image.id}, Title: ${image.title}`)
   }
