@@ -1,7 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  image: {},
+  image: {},  // Ensure this matches your expected state structure
 };
 
 const imageSlice = createSlice({
@@ -18,5 +18,5 @@ const imageSlice = createSlice({
   },
 });
 
-export const {setFaceImage, clearFaceImage} = imageSlice.actions;
+export const { setFaceImage, clearFaceImage } = imageSlice.actions;
 export default imageSlice.reducer;

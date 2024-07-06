@@ -1,12 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import selectedImage from './slices/selectedImages';
+import imageReducer from './slices/selectedImages';
 
 const rootReducer = combineReducers({
-  selectedImage: selectedImage,
+  image: imageReducer,
 });
 
 export default rootReducer;
-
-
-
-
