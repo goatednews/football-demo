@@ -56,7 +56,7 @@ export default function Example() {
             {shirt && (
               <KonvaImage
                 image={shirt}
-                x={95}
+                x={395}
                 y={200} // Adjust y coordinate to place shirt under face
                 width={300}
                 height={300}
@@ -65,10 +65,10 @@ export default function Example() {
             {face && (
               <KonvaImage
                 image={face}
+                x={445}
+                y={50}
                 width={200}
                 height={200}
-                x={145}
-                y={50}
               />
             )}
           </Layer>
