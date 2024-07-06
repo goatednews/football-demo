@@ -15,6 +15,9 @@ export default function Sidebar() {
   if (faceImage) {
     images = [
       {id: 1, title: 'Image 1', src: '/Images/manchester-united.png'},
+      {id: 2, title: 'Image 2', src: '/Images/liver-pool.png'},
+      {id: 3, title: 'Image 2', src: '/Images/liver-pool.png'},
+      {id: 4, title: 'Image 2', src: '/Images/liver-pool.png'},
     ];
   } else {
     images = [
