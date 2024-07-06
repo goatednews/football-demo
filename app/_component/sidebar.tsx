@@ -4,6 +4,7 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {setFaceImage, clearFaceImage} from '@/app/_redux/slices/selectedImages';
+import {setShirtImage, clearShirtImage} from '@/app/_redux/slices/selectedShirtImages';
 
 export default function Sidebar() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -16,8 +17,8 @@ export default function Sidebar() {
     images = [
       {id: 1, title: 'Image 1', src: '/Images/manchester-united.png'},
       {id: 2, title: 'Image 2', src: '/Images/liver-pool.png'},
-      {id: 3, title: 'Image 2', src: '/Images/liver-pool.png'},
-      {id: 4, title: 'Image 2', src: '/Images/liver-pool.png'},
+      {id: 3, title: 'Image 3', src: '/Images/liver-pool.png'},
+      {id: 4, title: 'Image 4', src: '/Images/liver-pool.png'},
     ];
   } else {
     images = [
@@ -38,6 +39,7 @@ export default function Sidebar() {
   const handleClearImage = () => {
     setSelectedImage(null);
     dispatch(clearFaceImage());
+    dispatch(clearShirtImage());
   };
   
   const handleSubmit = () => {
@@ -45,7 +47,16 @@ export default function Sidebar() {
       setError('Please Select Image');
       return;
     } else {
-      dispatch(setFaceImage(selectedImage));
+      if (faceImage) {
+        console.log('setting shirt image')
+        dispatch(setShirtImage(selectedImage));
+        setSelectedImage(null)
+      } else {
+        console.log('setting face image')
+        dispatch(setFaceImage(selectedImage));
+        setSelectedImage(null)
+        
+      }
       console.log('Submit button clicked');
     }
   };
