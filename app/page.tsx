@@ -1,9 +1,10 @@
-import Sidebar from './_component/sidebar'
+
+import PlayerMakerCanvas from './_component/PlayerMakerCanvas';
 
 export default function Home() {
   return (
-    <main>
-      <Sidebar/>
+    <main >
+        <PlayerMakerCanvas/>
     </main>
-  );
+);
 }
