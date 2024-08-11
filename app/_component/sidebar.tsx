@@ -15,17 +15,17 @@ export default function Sidebar() {
   
   if (faceImage) {
     images = [
+      {id: 1, title: 'Image 1', src: '/Images/male-side2.jpg'},
+      {id: 2, title: 'Image 2', src: '/Images/male-side1.jpg'},
+      {id: 3, title: 'Image 3', src: '/Images/male-back.jpg'},
+      {id: 4, title: 'Image 4', src: '/Images/male-front.jpg'},
+    ];
+  } else {
+    images = [
       {id: 1, title: 'Image 1', src: '/Images/manchester-united.png'},
       {id: 2, title: 'Image 2', src: '/Images/liver-pool.png'},
       {id: 3, title: 'Image 3', src: '/Images/liver-pool.png'},
       {id: 4, title: 'Image 4', src: '/Images/liver-pool.png'},
-    ];
-  } else {
-    images = [
-      {id: 1, title: 'Image 1', src: '/Images/Image - 1.png'},
-      {id: 2, title: 'Image 2', src: '/Images/Image - 2.png'},
-      {id: 3, title: 'Image 3', src: '/Images/Image - 2.png'},
-      {id: 4, title: 'Image 4', src: '/Images/Image - 2.png'},
     ];
   }
   
@@ -67,7 +67,7 @@ export default function Sidebar() {
         <div className="px-4 py-6 sm:px-6">
           <div className="flex items-start justify-between w-full">
             <h2 className="text-base font-semibold leading-6 text-gray-900 text-center w-full">
-              {faceImage ? 'Please Select the Jersey Now' : 'Please Select Player'}
+              {faceImage ? 'Please Select Player' : 'Please Select the Jersey Now'}
             </h2>
           </div>
         </div>

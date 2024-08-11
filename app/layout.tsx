@@ -22,7 +22,7 @@ export default function RootLayout({
     <body className={`${inter.className} min-h-screen h-full`}>
     <ClientProvider>
       <div className="flex min-h-screen h-full">
-        <Sidebar />
+        {/*<Sidebar />*/}
         <main className="flex-1 h-full">
           {children}
         </main>
